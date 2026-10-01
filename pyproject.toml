@@ -1,0 +1,63 @@
+[project]
+name = "generate-journal"
+version = "0.1.0"
+description = "Генерация журналов посещаемости в формате .docx"
+readme = "README.md"
+authors = [
+    { name = "ah3ron", email = "ah3ron@protonmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "python-docx>=1.2.0",
+]
+
+[project.scripts]
+generate-journal = "generate_journal:main"
+
+[build-system]
+requires = ["uv_build>=0.12.21,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.0",
+]
+
+[tool.ruff]
+line-length = 88
+fix = true
+preview = true
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # pyflakes
+    "I",      # isort
+    "UP",     # pyupgrade
+    "TC",     # type-checking imports
+    "B",      # bugbear
+    "SIM",    # simplify
+    "RUF",    # ruff-specific
+]
+ignore = [
+    "E501",   # длина строки контролируется форматером
+    "RUF001", # неоднозначные кириллические символы в строках (русский текст)
+    "RUF002", # то же для docstring-комментариев
+    "RUF003", # то же для комментариев
+    "CPY001", # уведомление об авторских правах не требуется
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["generate_journal"]
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 88
+
+[tool.pyright]
+pythonVersion = "3.14"
+include = ["src"]
+venvPath = "."
+venv = ".venv"
+reportGeneralTypeIssues = "warning"
