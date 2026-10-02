@@ -173,7 +173,7 @@ def _add_class(
     t._tbl.tblPr.append(lay)
 
     hdr = t.rows[0]
-    hdr.height = Cm(2.4)
+    hdr.height = Cm(1.8)
     hdr.height_rule = WD_ROW_HEIGHT_RULE.EXACTLY
     c = hdr.cells[0]
     c.paragraphs[0].add_run("№ п/п").bold = True
